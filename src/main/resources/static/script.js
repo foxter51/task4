@@ -43,7 +43,7 @@ function sendPrivateMessage(){
     let subject = $("#subject").val();
     let messageContent = $("#messageContent").val();
 
-    if(users.includes(user => user.length < 2) || messageContent.length < 1){
+    if(!validateUsers(users) || messageContent.length < 1){
         $("#successSent").text("Message wasn't sent!");
     }
     else{
@@ -54,6 +54,15 @@ function sendPrivateMessage(){
 
 function extractUsers(usersList){
     return usersList.split(', ');
+}
+
+function validateUsers(usersList){
+    for(let user of usersList){
+        if(user.length < 2){
+            return false;
+        }
+    }
+    return true;
 }
 
 
