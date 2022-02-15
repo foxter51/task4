@@ -43,7 +43,7 @@ function sendPrivateMessage(){
     let subject = $("#subject").val();
     let messageContent = $("#messageContent").val();
 
-    if(users.forEach(user => user.length > 2) || messageContent.length < 1){
+    if(users.includes(user => user.length < 2) || messageContent.length < 1){
         $("#successSent").text("Message wasn't sent!");
     }
     else{
